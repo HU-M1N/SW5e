@@ -1,0 +1,19 @@
+<drac2>
+c = character()
+com = combat()
+a = argparse(&ARGS&)
+hpcard = {1d20}
+mhpcard = {1d20}
+
+base = f'''embed -thumb {image} -color {color}'''
+
+if com:
+    if com.me is None:
+        return err("Current character not at the sabacc table.")
+    com.me.set_hp = hpcard
+    com.me.set_maxhp = mhpcard
+
+base += f''' -title "{name} draws a card! {hpcard} is first card. {mhpcard} is second card." '''
+
+return base
+</drac2>
