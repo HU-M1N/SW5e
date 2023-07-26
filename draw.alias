@@ -4,18 +4,20 @@
 #variables
 c = character()
 com = combat()
-a = argparse(&ARGS&)
-card1 = roll(f'1d20')
-card2 = roll(f'1d20')
-hpcard = min(card1,card2)
-maxcard = max(card1,card2)
 
 #sets base
 base = f'''embed -thumb {image} -color {color}'''
 
-#saves the rolls
+card1 = roll(f'1d20')
+card2 = roll(f'1d20')
+hpcard = min(card1,card2)
+maxcard = max(card1,card2)
 com.current.set_hp(hpcard)
 com.current.set_maxhp(maxcard)
+
+#ping the dealer
+com.get_combatant(dealer).set_hp(hpcard)
+com.get_combatant(dealer).set_maxhp(maxcard)
 
 base += f''' -title "{name} draws a card! {hpcard} is first card. {maxcard} is the second card." '''
 
