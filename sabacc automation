@@ -1,0 +1,57 @@
+!alias sabacc embed
+
+<drac2>
+
+#Variables
+dealer = combat().me
+
+#Dealer Effect
+peff = dealer.add_effect(
+    "Dealing Sabacc",
+    attacks=
+        [{
+        "attack": 
+            {
+            "_v": 2,
+            "name": "Ante",
+            "verb": "calls for",
+            "automation": 
+                [{
+                      "type": "target",
+                      "target": "all",
+                      "effects": 
+                    [{
+                        "type": "ieffect2",
+                        "target": "each",
+                        "name": "Playing Sabacc",
+                        "buttons": 
+                        [{
+                            "label": "See my cards",
+                            "style": "2",
+                            "verb": "checks their cards",
+                            "automation": 
+                            [{
+                                "type": "target",
+                                "target": "self",
+                                "effects":
+                                [{
+                                    "type": "damage",
+                                    "damage": "1"
+                                }]
+                            }]
+                        }]
+                    }]
+                }]
+            }
+        }]
+    )
+
+</drac2>
+
+-title "is dealing Sabaac!"
+-desc "Game instructions go here"
+-f "Maybe some more game instructions."
+-color #feba4f
+-footer "{{dealer}} is dealing."
+-thumb <image>
+-image <image>
