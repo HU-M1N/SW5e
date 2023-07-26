@@ -5,8 +5,10 @@
 c = character()
 com = combat()
 a = argparse(&ARGS&)
-hpcard = roll(f'1d20')
-maxcard = roll(f'1d20')
+card1 = roll(f'1d20')
+card2 = roll(f'1d20')
+hpcard = min(card1,card2)
+maxcard = max(card1,card2)
 
 #sets base
 base = f'''embed -thumb {image} -color {color}'''
@@ -14,26 +16,6 @@ base = f'''embed -thumb {image} -color {color}'''
 #saves the rolls
 com.current.set_hp(hpcard)
 com.current.set_maxhp(maxcard)
-
-#buttons
-com.current.add_effect("Playing Sabacc", buttons=[{
-        "label": "On Fire",
-        "verb": "is burning",
-        "style": 4,
-        "automation": [
-            {
-                "type": "target",
-                "target": "self",
-                "effects": [
-                    {
-                        "type": "damage",
-                        "damage": "1d6 [fire]"
-                    }
-                ]
-            }
-        ]
-    }]
-)
 
 base += f''' -title "{name} draws a card! {hpcard} is first card. {maxcard} is the second card." '''
 
