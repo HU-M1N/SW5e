@@ -12,18 +12,6 @@ if not hilow:
 #sets base
 base = f'''embed -thumb {image} -color {color}'''
 
-card1 = roll(f'1d20')
-card2 = roll(f'1d20')
-hpcard = min(card1,card2)
-maxcard = max(card1,card2)
-
-#sets base
-base = f'''embed -thumb {image} -color {color}'''
-
-#saves the rolls
-com.current.set_hp(hpcard)
-com.current.set_maxhp(maxcard)
-
 if hilow.lower() in ['high', 'hi']:
     card1 = roll(f'1d20')
     card2 = com.current.hp
