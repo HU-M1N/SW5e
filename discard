@@ -5,6 +5,7 @@
 c = character()
 com = combat()
 a = argparse(&ARGS&)
+hilow = &ARGS&[0]
 
 card1 = roll(f'1d20')
 card2 = roll(f'1d20')
