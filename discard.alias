@@ -31,7 +31,6 @@ if hilow.lower() in ['high', 'hi']:
     maxcard = max(card1,card2)
     com.current.set_hp(hpcard)
     com.current.set_maxhp(maxcard)
-    }
 elif hilow.lower() in ['low', 'low']:
     card1 = roll(f'1d20')
     card2 = com.current.max_hp
