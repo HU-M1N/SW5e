@@ -4,8 +4,13 @@
 #variables
 c = character()
 com = combat()
-a = argparse(&ARGS&)
 hilow = &ARGS&[0]
+
+if not hilow:
+    err(f"Specify high or low card to discard.")
+
+#sets base
+base = f'''embed -thumb {image} -color {color}'''
 
 card1 = roll(f'1d20')
 card2 = roll(f'1d20')
@@ -19,7 +24,25 @@ base = f'''embed -thumb {image} -color {color}'''
 com.current.set_hp(hpcard)
 com.current.set_maxhp(maxcard)
 
-base += f''' -title "{name} draws a card! {hpcard} is first card. {maxcard} is the second card." '''
+if hilow.lower() in ['high', 'hi']:
+    card1 = roll(f'1d20')
+    card2 = com.current.hp
+    hpcard = min(card1,card2)
+    maxcard = max(card1,card2)
+    com.current.set_hp(hpcard)
+    com.current.set_maxhp(maxcard)
+    }
+elif hilow.lower() in ['low', 'low']:
+    card1 = roll(f'1d20')
+    card2 = com.current.max_hp
+    hpcard = min(card1,card2)
+    maxcard = max(card1,card2)
+    com.current.set_hp(hpcard)
+    com.current.set_maxhp(maxcard)
+else:
+    err(f"{hilow} is not a valid option")
+
+base += f''' -title "{name} draws a card! {hpcard} {maxcard}." '''
 
 return base
 </drac2>
