@@ -16,10 +16,10 @@ com.current.set_hp(hpcard)
 com.current.set_maxhp(maxcard)
 
 #ping the dealer
-com.get_combatant(dealer).set_hp(hpcard)
-com.get_combatant(dealer).set_maxhp(maxcard)
+com.get_combatant("dealer").set_hp(hpcard)
+com.get_combatant("dealer").set_maxhp(maxcard)
 
-base += f''' -title "{name} draws a card! {hpcard} is first card. {maxcard} is the second card." '''
+base += f''' -title "{name} draws two cards! {hpcard} is first card. {maxcard} is the second card." '''
 
 return base
 </drac2>
