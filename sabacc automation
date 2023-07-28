@@ -37,6 +37,10 @@ peff = dealer.add_effect(
                                 [{
                                     "type": "damage",
                                     "damage": "1"
+                                },
+                                {
+                                     "type": "temphp"
+                                     "amount": "+1"
                                 }]
                             }]
                         }]
