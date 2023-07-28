@@ -2,11 +2,7 @@
 
 <drac2>
 
-#Variables
-dealer = combat().me
-
-#Dealer Effect
-peff = dealer.add_effect(
+peff = combat().current.add_effect(
     "Dealing Sabacc",
     attacks=
         [{
@@ -26,8 +22,8 @@ peff = dealer.add_effect(
                         "name": "Playing Sabacc",
                         "buttons": 
                         [{
-                            "label": "See my cards",
-                            "style": "2",
+                            "label": "Check my Cards",
+                            "style": "1",
                             "verb": "checks their cards",
                             "automation": 
                             [{
@@ -39,8 +35,21 @@ peff = dealer.add_effect(
                                     "damage": "1"
                                 },
                                 {
-                                     "type": "temphp"
-                                     "amount": "+1"
+                                     "type": "temphp",
+                                     "amount": "1"
+                                }]
+                            },
+                            {
+                                "type": "target",
+                                "target": "parent",
+                                "effects":
+                                [{
+                                    "type": "damage",
+                                    "damage": "1"
+                                },
+                                {
+                                     "type": "temphp",
+                                     "amount": "1"
                                 }]
                             }]
                         }]
@@ -56,6 +65,6 @@ peff = dealer.add_effect(
 -desc "Game instructions go here"
 -f "Maybe some more game instructions."
 -color #feba4f
--footer "{{dealer}} is dealing."
+-footer "is dealing."
 -thumb <image>
 -image <image>
